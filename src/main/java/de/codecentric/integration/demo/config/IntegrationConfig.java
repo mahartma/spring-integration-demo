@@ -1,0 +1,31 @@
+package de.codecentric.integration.demo.config;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.integration.core.SubscribableChannel;
+
+import de.codecentric.integration.demo.handler.MyHandler;
+
+
+@Configuration
+@ImportResource("integration-context.xml")
+public class IntegrationConfig {
+
+	@Autowired 
+	@Qualifier("myChannel")
+	private SubscribableChannel myChannel;
+	
+	@Bean
+	public MyHandler myHandler() {
+		MyHandler myHandler = new MyHandler();
+		myChannel.subscribe(myHandler);
+		return myHandler;
+	}
+	
+	@Bean
+	public MyPojo myPojo() {
+		return new MyPojo();
+	}
+}
