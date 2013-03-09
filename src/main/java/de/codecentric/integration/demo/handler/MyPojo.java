@@ -1,4 +1,4 @@
-package de.codecentric.integration.demo.config;
+package de.codecentric.integration.demo.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

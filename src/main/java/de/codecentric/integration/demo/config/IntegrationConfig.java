@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.integration.core.SubscribableChannel;
 
 import de.codecentric.integration.demo.handler.MyHandler;
+import de.codecentric.integration.demo.handler.MyPojo;
 
 
 @Configuration
