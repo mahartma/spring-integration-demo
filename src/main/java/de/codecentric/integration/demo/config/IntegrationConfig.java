@@ -11,7 +11,7 @@ import de.codecentric.integration.demo.handler.MyPojo;
 
 
 @Configuration
-@ImportResource("classpath:integration-context.xml")
+@ImportResource("classpath:*-context.xml")
 public class IntegrationConfig {
 
 	@Autowired 

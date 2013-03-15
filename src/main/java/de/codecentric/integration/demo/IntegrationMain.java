@@ -1,5 +1,4 @@
 package de.codecentric.integration.demo;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.integration.Message;
 import org.springframework.integration.MessageChannel;
@@ -17,9 +16,12 @@ import de.codecentric.integration.demo.config.IntegrationConfig;
 public class IntegrationMain {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = null;
+		AnnotationConfigApplicationContext ctx = null;
 		try {
-			ctx = new AnnotationConfigApplicationContext(IntegrationConfig.class);
+			ctx = new AnnotationConfigApplicationContext();
+			ctx.getEnvironment().setActiveProfiles("main");
+			ctx.register(IntegrationConfig.class);
+			ctx.refresh();
 			MessageChannel myChannel = ctx.getBean("myChannel", MessageChannel.class);
 			Message<?> message = MessageBuilder.withPayload("World").build();
 			myChannel.send(message);
