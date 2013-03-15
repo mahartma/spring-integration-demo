@@ -32,10 +32,12 @@ dependencies {
 }
 
 // maven-like test-stats
-test {
-	afterSuite { desc, result ->
-		if (!desc.parent) {
-			println "Results: ${result.resultType} (${result.testCount} tests run, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+allprojects {
+	test {
+		afterSuite { desc, result ->
+			if (!desc.parent) {
+				println "Results: ${result.resultType} (${result.testCount} tests run, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+			}
 		}
 	}
 }
