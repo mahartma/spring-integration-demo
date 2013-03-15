@@ -1,1 +1,2 @@
+include 'binding'
 rootProject.name = 'spring-integration-demo'

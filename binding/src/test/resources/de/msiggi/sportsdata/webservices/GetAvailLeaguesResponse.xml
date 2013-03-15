@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetAvailLeaguesResponse xmlns="http://msiggi.de/Sportsdata/Webservices">
+    <GetAvailLeaguesResult>
+        <League>
+            <leagueID>0</leagueID>
+            <leagueSportID>0</leagueSportID>
+            <leagueName>Bundesliga</leagueName>
+        </League>
+    </GetAvailLeaguesResult>
+</GetAvailLeaguesResponse>

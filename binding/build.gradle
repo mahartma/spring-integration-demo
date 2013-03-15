@@ -1,0 +1,36 @@
+project.version = '1.0-SNAPSHOT'
+
+repositories { mavenCentral() }
+
+apply plugin: 'java'
+
+configurations { jibx }
+
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: "4.10"
+	testCompile group: 'org.mockito', name: 'mockito-all', version: "1.9.0"
+	testCompile group: 'commons-io', name: 'commons-io', version: "2.4"
+	compile group:'org.jibx', name: 'jibx-ws', version: "0.9.1"
+	jibx group:'org.jibx', name: 'jibx-tools', version: "1.2.5"
+	jibx group:'org.jibx', name: 'jibx-bind', version: "1.2.5"
+}
+
+task(type : JavaExec, 'generateBinding') {
+	classpath = configurations.jibx + configurations.compile + sourceSets.main.runtimeClasspath
+	main = 'org.jibx.binding.Compile'
+	args = [
+		'src/main/resources/binding.xml'
+	]
+}
+
+jar.dependsOn generateBinding
+
+task(type : JavaExec, 'generateCode') {
+	classpath = configurations.jibx + configurations.compile
+	main = 'org.jibx.schema.codegen.CodeGen'
+	args = [
+		'-t',
+		'src/main/java',
+		'src/main/resources/openliga.xsd'
+	]
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans profile="openLiga" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-stream="http://www.springframework.org/schema/integration/stream"
+	xmlns:int-http="http://www.springframework.org/schema/integration/http"
+	xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/oxm 
+   http://www.springframework.org/schema/oxm/spring-oxm.xsd
+   http://www.springframework.org/schema/integration 
+   http://www.springframework.org/schema/integration/spring-integration-2.2.xsd
+   http://www.springframework.org/schema/integration/stream 
+   http://www.springframework.org/schema/integration/stream/spring-integration-stream-2.2.xsd
+   http://www.springframework.org/schema/integration/http
+   http://www.springframework.org/schema/integration/http/spring-integration-http-2.2.xsd
+   http://www.springframework.org/schema/integration/jms
+   http://www.springframework.org/schema/integration/jms/spring-integration-jms-2.2.xsd
+   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<beans>
+
+		<bean id="messageFactory"
+			class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">
+			<property name="soapVersion">
+				<util:constant static-field="org.springframework.ws.soap.SoapVersion.SOAP_12" />
+			</property>
+		</bean>
+
+		<bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+			<constructor-arg ref="messageFactory" />
+			<property name="defaultUri"
+				value="http://www.openligadb.de/Webservices/Sportsdata.asmx" />
+			<property name="marshaller" ref="jibxMarshaller" />
+			<property name="unmarshaller" ref="jibxMarshaller" />
+		</bean>
+
+		<bean id="jibxMarshaller" class="org.springframework.oxm.jibx.JibxMarshaller">
+			<property name="targetPackage" value="de.msiggi.sportsdata.webservices" />
+		</bean>
+
+	</beans>
+</beans>
