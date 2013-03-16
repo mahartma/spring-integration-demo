@@ -48,7 +48,7 @@ public class JibXMarshallerTest {
 		String expected = IOUtils.toString(stream);
 		//when
 		marshaller.marshalDocument(r, "UTF-8", null, outputStreamMock);
-		verify(outputStreamMock).write(captor.capture(), (int)any(Integer.class), (int)any(Integer.class));
+		verify(outputStreamMock).write(captor.capture(), any(int.class), any(int.class));
 		//then
 		assertThat(expected, is(new String(captor.getValue()).trim()));
 		
