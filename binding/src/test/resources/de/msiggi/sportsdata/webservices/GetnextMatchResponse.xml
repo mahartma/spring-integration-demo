@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetnextMatchResponse xmlns="http://msiggi.de/Sportsdata/Webservices">
+    <GetnextMatchResult>
+        <matchID>4711</matchID>
+        <matchDateTime>2011-01-14T23:00:00Z</matchDateTime>
+        <matchDateTimeUTC>2011-01-14T23:00:00Z</matchDateTimeUTC>
+        <groupID>4711</groupID>
+        <groupOrderID>4711</groupOrderID>
+        <leagueID>4711</leagueID>
+        <leagueName>Bundesliga</leagueName>
+        <idTeam1>1</idTeam1>
+        <idTeam2>2</idTeam2>
+        <pointsTeam1>3</pointsTeam1>
+        <pointsTeam2>0</pointsTeam2>
+        <lastUpdate>2011-01-14T23:00:00Z</lastUpdate>
+        <matchIsFinished>true</matchIsFinished>
+        <matchResults/>
+        <goals/>
+        <location>
+            <locationID>0</locationID>
+        </location>
+        <NumberOfViewers>2423</NumberOfViewers>
+    </GetnextMatchResult>
+</GetnextMatchResponse>

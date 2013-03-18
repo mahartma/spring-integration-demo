@@ -1,7 +1,9 @@
 
 package de.msiggi.sportsdata.webservices;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /** 
  * Schema fragment(s) for this class:
@@ -60,8 +62,8 @@ public class Matchdata
     private int pointsTeam2;
     private Date lastUpdate;
     private boolean matchIsFinished;
-    private ArrayOfMatchResult matchResults;
-    private ArrayOfGoal goals;
+    private List<MatchResult> matchResultList = new ArrayList<MatchResult>();
+    private List<Goal> goalList = new ArrayList<Goal>();
     private Location location;
     private Integer numberOfViewers;
 
@@ -443,41 +445,7 @@ public class Matchdata
         this.matchIsFinished = matchIsFinished;
     }
 
-    /** 
-     * Get the 'matchResults' element value.
-     * 
-     * @return value
-     */
-    public ArrayOfMatchResult getMatchResults() {
-        return matchResults;
-    }
-
-    /** 
-     * Set the 'matchResults' element value.
-     * 
-     * @param matchResults
-     */
-    public void setMatchResults(ArrayOfMatchResult matchResults) {
-        this.matchResults = matchResults;
-    }
-
-    /** 
-     * Get the 'goals' element value.
-     * 
-     * @return value
-     */
-    public ArrayOfGoal getGoals() {
-        return goals;
-    }
-
-    /** 
-     * Set the 'goals' element value.
-     * 
-     * @param goals
-     */
-    public void setGoals(ArrayOfGoal goals) {
-        this.goals = goals;
-    }
+    
 
     /** 
      * Get the 'location' element value.
@@ -514,4 +482,32 @@ public class Matchdata
     public void setNumberOfViewers(Integer numberOfViewers) {
         this.numberOfViewers = numberOfViewers;
     }
+
+	/**
+	 * @return the matchResultList
+	 */
+	public List<MatchResult> getMatchResultList() {
+		return matchResultList;
+	}
+
+	/**
+	 * @param matchResultList the matchResultList to set
+	 */
+	public void setMatchResultList(List<MatchResult> matchResultList) {
+		this.matchResultList = matchResultList;
+	}
+
+	/**
+	 * @return the goalList
+	 */
+	public List<Goal> getGoalList() {
+		return goalList;
+	}
+
+	/**
+	 * @param goalList the goalList to set
+	 */
+	public void setGoalList(List<Goal> goalList) {
+		this.goalList = goalList;
+	}
 }

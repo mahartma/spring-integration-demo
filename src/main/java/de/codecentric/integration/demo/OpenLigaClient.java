@@ -3,9 +3,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import de.codecentric.integration.demo.config.OpenLigaConfig;
-import de.msiggi.sportsdata.webservices.GetAvailLeagues;
-import de.msiggi.sportsdata.webservices.GetAvailLeaguesResponse;
-import de.msiggi.sportsdata.webservices.League;
+import de.msiggi.sportsdata.webservices.GetTeamsByLeagueSaison;
+import de.msiggi.sportsdata.webservices.Team;
+import de.msiggi.sportsdata.webservices.TeamsByLeagueSaison;
 
 
 /**
@@ -24,10 +24,16 @@ public class OpenLigaClient {
 			ctx.register(OpenLigaConfig.class);
 			ctx.refresh();
 			WebServiceTemplate template = ctx.getBean(WebServiceTemplate.class);
-			GetAvailLeaguesResponse leagues = (GetAvailLeaguesResponse) template.marshalSendAndReceive(new GetAvailLeagues());
-			for(League league : leagues.getGetAvailLeaguesResult().getLeagueList()) {
-				System.out.println(league.getLeagueName());
+			
+			//get all teams
+			GetTeamsByLeagueSaison teamsRequest = new GetTeamsByLeagueSaison();
+			teamsRequest.setLeagueShortcut("BL1");
+			teamsRequest.setLeagueSaison("2013");
+			TeamsByLeagueSaison  teams = (TeamsByLeagueSaison) template.marshalSendAndReceive(teamsRequest);
+			for(Team team  : teams.getTeamList()) {
+				System.out.println(team.getTeamName());
 			}
+			
 		} finally {
 			if (ctx != null) {
 				ctx.close();

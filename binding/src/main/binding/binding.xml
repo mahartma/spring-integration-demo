@@ -1,0 +1,492 @@
+<binding xmlns:ns1="http://msiggi.de/Sportsdata/Webservices"
+	name="binding" package="de.msiggi.sportsdata.webservices"
+	trim-whitespace="true">
+	<namespace uri="http://msiggi.de/Sportsdata/Webservices"
+		prefix="" default="all" />
+	<mapping class="de.msiggi.sportsdata.webservices.GetAvailLeagues"
+		name="GetAvailLeagues" ns="http://msiggi.de/Sportsdata/Webservices" />
+	<mapping class="de.msiggi.sportsdata.webservices.AvailLeagues"
+		name="GetAvailLeaguesResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetAvailLeaguesResult" get-method="getLeagueList"
+			set-method="setLeagueList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:League" name="League" />
+		</collection>
+	</mapping>
+	<mapping abstract="true" type-name="ns1:League"
+		class="de.msiggi.sportsdata.webservices.League">
+		<value style="element" name="leagueID" get-method="getLeagueID"
+			set-method="setLeagueID" />
+		<value style="element" name="leagueSportID" get-method="getLeagueSportID"
+			set-method="setLeagueSportID" />
+		<value style="element" name="leagueName" get-method="getLeagueName"
+			set-method="setLeagueName" usage="optional" />
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetNextMatch"
+		name="GetNextMatch" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.NextMatch"
+		name="GetnextMatchResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<structure map-as="ns1:Matchdata" get-method="getGetnextMatchResult"
+			set-method="setGetnextMatchResult" name="GetnextMatchResult" />
+	</mapping>
+	<mapping abstract="true" type-name="ns1:Matchdata"
+		class="de.msiggi.sportsdata.webservices.Matchdata">
+		<value style="element" name="matchID" get-method="getMatchID"
+			set-method="setMatchID" />
+		<value style="element" name="matchDateTime" get-method="getMatchDateTime"
+			set-method="setMatchDateTime" />
+		<value style="element" name="TimeZoneID" get-method="getTimeZoneID"
+			set-method="setTimeZoneID" usage="optional" />
+		<value style="element" name="matchDateTimeUTC" get-method="getMatchDateTimeUTC"
+			set-method="setMatchDateTimeUTC" />
+		<value style="element" name="groupID" get-method="getGroupID"
+			set-method="setGroupID" />
+		<value style="element" name="groupOrderID" get-method="getGroupOrderID"
+			set-method="setGroupOrderID" />
+		<value style="element" name="groupName" get-method="getGroupName"
+			set-method="setGroupName" usage="optional" />
+		<value style="element" name="leagueID" get-method="getLeagueID"
+			set-method="setLeagueID" />
+		<value style="element" name="leagueName" get-method="getLeagueName"
+			set-method="setLeagueName" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="nameTeam1" get-method="getNameTeam1"
+			set-method="setNameTeam1" usage="optional" />
+		<value style="element" name="nameTeam2" get-method="getNameTeam2"
+			set-method="setNameTeam2" usage="optional" />
+		<value style="element" name="idTeam1" get-method="getIdTeam1"
+			set-method="setIdTeam1" />
+		<value style="element" name="idTeam2" get-method="getIdTeam2"
+			set-method="setIdTeam2" />
+		<value style="element" name="iconUrlTeam1" get-method="getIconUrlTeam1"
+			set-method="setIconUrlTeam1" usage="optional" />
+		<value style="element" name="iconUrlTeam2" get-method="getIconUrlTeam2"
+			set-method="setIconUrlTeam2" usage="optional" />
+		<value style="element" name="pointsTeam1" get-method="getPointsTeam1"
+			set-method="setPointsTeam1" />
+		<value style="element" name="pointsTeam2" get-method="getPointsTeam2"
+			set-method="setPointsTeam2" />
+		<value style="element" name="lastUpdate" get-method="getLastUpdate"
+			set-method="setLastUpdate" />
+		<value style="element" name="matchIsFinished" get-method="isMatchIsFinished"
+			set-method="setMatchIsFinished" />
+		<collection name="matchResults" get-method="getMatchResultList"
+			set-method="setMatchResultList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:matchResult" name="matchResult" />
+		</collection>
+		<collection name="goals" get-method="getGoalList"
+			set-method="setGoalList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:Goal" name="Goal" />
+		</collection>
+		<structure map-as="ns1:Location" get-method="getLocation"
+			set-method="setLocation" name="location" />
+		<value style="element" name="NumberOfViewers" get-method="getNumberOfViewers"
+			set-method="setNumberOfViewers" usage="optional" />
+	</mapping>
+	<mapping abstract="true" type-name="ns1:matchResult"
+		class="de.msiggi.sportsdata.webservices.MatchResult">
+		<value style="element" name="resultname" get-method="getResultname"
+			set-method="setResultname" usage="optional" />
+		<value style="element" name="pointsTeam1" get-method="getPointsTeam1"
+			set-method="setPointsTeam1" />
+		<value style="element" name="pointsTeam2" get-method="getPointsTeam2"
+			set-method="setPointsTeam2" />
+		<value style="element" name="resultOrderID" get-method="getResultOrderID"
+			set-method="setResultOrderID" />
+		<value style="element" name="resultTypeName" get-method="getResultTypeName"
+			set-method="setResultTypeName" usage="optional" />
+		<value style="element" name="resultTypeId" get-method="getResultTypeId"
+			set-method="setResultTypeId" />
+	</mapping>
+	<mapping abstract="true" type-name="ns1:Goal"
+		class="de.msiggi.sportsdata.webservices.Goal">
+		<value style="element" name="goalID" get-method="getGoalID"
+			set-method="setGoalID" />
+		<value style="element" name="goalMachID" get-method="getGoalMachID"
+			set-method="setGoalMachID" usage="optional" />
+		<value style="element" name="goalScoreTeam1" get-method="getGoalScoreTeam1"
+			set-method="setGoalScoreTeam1" usage="optional" />
+		<value style="element" name="goalScoreTeam2" get-method="getGoalScoreTeam2"
+			set-method="setGoalScoreTeam2" usage="optional" />
+		<value style="element" name="goalMatchMinute" get-method="getGoalMatchMinute"
+			set-method="setGoalMatchMinute" usage="optional" />
+		<value style="element" name="goalGetterID" get-method="getGoalGetterID"
+			set-method="setGoalGetterID" />
+		<value style="element" name="goalGetterName" get-method="getGoalGetterName"
+			set-method="setGoalGetterName" usage="optional" />
+		<value style="element" name="goalPenalty" get-method="getGoalPenalty"
+			set-method="setGoalPenalty" usage="optional" />
+		<value style="element" name="goalOwnGoal" get-method="getGoalOwnGoal"
+			set-method="setGoalOwnGoal" usage="optional" />
+		<value style="element" name="goalOvertime" get-method="getGoalOvertime"
+			set-method="setGoalOvertime" usage="optional" />
+		<value style="element" name="goalComment" get-method="getGoalComment"
+			set-method="setGoalComment" usage="optional" />
+	</mapping>
+	<mapping abstract="true" type-name="ns1:Location"
+		class="de.msiggi.sportsdata.webservices.Location">
+		<value style="element" name="locationID" get-method="getLocationID"
+			set-method="setLocationID" />
+		<value style="element" name="locationCity" get-method="getLocationCity"
+			set-method="setLocationCity" usage="optional" />
+		<value style="element" name="locationStadium" get-method="getLocationStadium"
+			set-method="setLocationStadium" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetLastMatch"
+		name="GetLastMatch" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.LastMatch"
+		name="GetLastMatchResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<structure map-as="ns1:Matchdata" get-method="getGetLastMatchResult"
+			set-method="setGetLastMatchResult" name="GetLastMatchResult" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetnextMatchByLeagueTeam"
+		name="GetnextMatchByLeagueTeam" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueId" get-method="getLeagueId"
+			set-method="setLeagueId" />
+		<value style="element" name="teamId" get-method="getTeamId"
+			set-method="setTeamId" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.NextMatchByLeagueTeam"
+		name="GetnextMatchByLeagueTeamResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<structure map-as="ns1:Matchdata" get-method="getGetnextMatchByLeagueTeamResult"
+			set-method="setGetnextMatchByLeagueTeamResult" name="GetnextMatchByLeagueTeamResult" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetLastMatchByLeagueTeam"
+		name="GetLastMatchByLeagueTeam" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueId" get-method="getLeagueId"
+			set-method="setLeagueId" />
+		<value style="element" name="teamId" get-method="getTeamId"
+			set-method="setTeamId" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.LastMatchByLeagueTeam"
+		name="GetLastMatchByLeagueTeamResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<structure map-as="ns1:Matchdata" get-method="getGetLastMatchByLeagueTeamResult"
+			set-method="setGetLastMatchByLeagueTeamResult" name="GetLastMatchByLeagueTeamResult" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetCurrentGroupOrderID"
+		name="GetCurrentGroupOrderID" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.CurrentGroupOrderID"
+		name="GetCurrentGroupOrderIDResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="GetCurrentGroupOrderIDResult"
+			get-method="getGetCurrentGroupOrderIDResult" set-method="setGetCurrentGroupOrderIDResult" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetCurrentGroup"
+		name="GetCurrentGroup" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.CurrentGroup"
+		name="GetCurrentGroupResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<structure map-as="ns1:Group" get-method="getGetCurrentGroupResult"
+			set-method="setGetCurrentGroupResult" name="GetCurrentGroupResult" />
+	</mapping>
+	<mapping abstract="true" type-name="ns1:Group"
+		class="de.msiggi.sportsdata.webservices.Group">
+		<value style="element" name="groupName" get-method="getGroupName"
+			set-method="setGroupName" usage="optional" />
+		<value style="element" name="groupOrderID" get-method="getGroupOrderID"
+			set-method="setGroupOrderID" />
+		<value style="element" name="groupID" get-method="getGroupID"
+			set-method="setGroupID" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.GetMatchdataByGroupLeagueSaison"
+		name="GetMatchdataByGroupLeagueSaison" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="groupOrderID" get-method="getGroupOrderID"
+			set-method="setGroupOrderID" />
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.MatchdataByGroupLeagueSaison"
+		name="GetMatchdataByGroupLeagueSaisonResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetMatchdataByGroupLeagueSaisonResult"
+			get-method="getMatchdataList" set-method="setMatchdataList" usage="optional"
+			create-type="java.util.ArrayList">
+			<structure map-as="ns1:Matchdata" name="Matchdata" />
+		</collection>
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.GetMatchdataByLeagueDateTime"
+		name="GetMatchdataByLeagueDateTime" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="fromDateTime" get-method="getFromDateTime"
+			set-method="setFromDateTime" />
+		<value style="element" name="toDateTime" get-method="getToDateTime"
+			set-method="setToDateTime" />
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.MatchdataByLeagueDateTime"
+		name="GetMatchdataByLeagueDateTimeResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetMatchdataByLeagueDateTimeResult"
+			get-method="getMatchdataList" set-method="setMatchdataList" usage="optional"
+			create-type="java.util.ArrayList">
+			<structure map-as="ns1:Matchdata" name="Matchdata" />
+		</collection>
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetMatchdataByTeams"
+		name="GetMatchdataByTeams" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="teamID1" get-method="getTeamID1"
+			set-method="setTeamID1" />
+		<value style="element" name="teamID2" get-method="getTeamID2"
+			set-method="setTeamID2" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.MatchdataByTeams"
+		name="GetMatchdataByTeamsResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetMatchdataByTeamsResult" get-method="getMatchdataList"
+			set-method="setMatchdataList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:Matchdata" name="Matchdata" />
+		</collection>
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetMatchdataByLeagueSaison"
+		name="GetMatchdataByLeagueSaison" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.MatchdataByLeagueSaison"
+		name="GetMatchdataByLeagueSaisonResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetMatchdataByLeagueSaisonResult"
+			get-method="getMatchdataList" set-method="setMatchdataList" usage="optional"
+			create-type="java.util.ArrayList">
+			<structure map-as="ns1:Matchdata" name="Matchdata" />
+		</collection>
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.GetMatchdataByGroupLeagueSaisonJSON"
+		name="GetMatchdataByGroupLeagueSaisonJSON" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="groupOrderID" get-method="getGroupOrderID"
+			set-method="setGroupOrderID" />
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.MatchdataByGroupLeagueSaisonJSON"
+		name="GetMatchdataByGroupLeagueSaisonJSONResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="GetMatchdataByGroupLeagueSaisonJSONResult"
+			get-method="getGetMatchdataByGroupLeagueSaisonJSONResult" set-method="setGetMatchdataByGroupLeagueSaisonJSONResult"
+			usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetFusballdaten"
+		name="GetFusballdaten" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="Spieltag" get-method="getSpieltag"
+			set-method="setSpieltag" />
+		<value style="element" name="Liga" get-method="getLiga"
+			set-method="setLiga" usage="optional" />
+		<value style="element" name="Saison" get-method="getSaison"
+			set-method="setSaison" />
+		<value style="element" name="Userkennung" get-method="getUserkennung"
+			set-method="setUserkennung" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.Fusballdaten"
+		name="GetFusballdatenResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetFusballdatenResult" get-method="getFussballdatenList"
+			set-method="setFussballdatenList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:Fussballdaten" name="Fussballdaten" />
+		</collection>
+	</mapping>
+	<mapping abstract="true" type-name="ns1:Fussballdaten"
+		class="de.msiggi.sportsdata.webservices.Fussballdaten">
+		<value style="element" name="SpielID" get-method="getSpielID"
+			set-method="setSpielID" />
+		<value style="element" name="Spieltag" get-method="getSpieltag"
+			set-method="setSpieltag" />
+		<value style="element" name="Spieldatum" get-method="getSpieldatum"
+			set-method="setSpieldatum" />
+		<value style="element" name="Team1" get-method="getTeam1"
+			set-method="setTeam1" usage="optional" />
+		<value style="element" name="Team2" get-method="getTeam2"
+			set-method="setTeam2" usage="optional" />
+		<value style="element" name="ErgebnisTeam1" get-method="getErgebnisTeam1"
+			set-method="setErgebnisTeam1" />
+		<value style="element" name="ErgebnisTeam2" get-method="getErgebnisTeam2"
+			set-method="setErgebnisTeam2" />
+		<value style="element" name="lastUpdate" get-method="getLastUpdate"
+			set-method="setLastUpdate" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetMatchByMatchID"
+		name="GetMatchByMatchID" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="MatchID" get-method="getMatchID"
+			set-method="setMatchID" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.MatchByMatchID"
+		name="GetMatchByMatchIDResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<structure map-as="ns1:Matchdata" get-method="getGetMatchByMatchIDResult"
+			set-method="setGetMatchByMatchIDResult" name="GetMatchByMatchIDResult" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetTeamsByLeagueSaison"
+		name="GetTeamsByLeagueSaison" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.TeamsByLeagueSaison"
+		name="GetTeamsByLeagueSaisonResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetTeamsByLeagueSaisonResult" get-method="getTeamList"
+			set-method="setTeamList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:Team" name="Team" />
+		</collection>
+	</mapping>
+	<mapping abstract="true" type-name="ns1:Team"
+		class="de.msiggi.sportsdata.webservices.Team">
+		<value style="element" name="teamID" get-method="getTeamID"
+			set-method="setTeamID" />
+		<value style="element" name="teamName" get-method="getTeamName"
+			set-method="setTeamName" usage="optional" />
+		<value style="element" name="teamIconURL" get-method="getTeamIconURL"
+			set-method="setTeamIconURL" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetAvailGroups"
+		name="GetAvailGroups" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.AvailGroups"
+		name="GetAvailGroupsResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetAvailGroupsResult" get-method="getGroupList"
+			set-method="setGroupList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:Group" name="Group" />
+		</collection>
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetAvailSports"
+		name="GetAvailSports" ns="http://msiggi.de/Sportsdata/Webservices" />
+	<mapping class="de.msiggi.sportsdata.webservices.AvailSports"
+		name="GetAvailSportsResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetAvailSportsResult" get-method="getSportList"
+			set-method="setSportList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:Sport" name="Sport" />
+		</collection>
+	</mapping>
+	<mapping abstract="true" type-name="ns1:Sport"
+		class="de.msiggi.sportsdata.webservices.Sport">
+		<value style="element" name="sportsID" get-method="getSportsID"
+			set-method="setSportsID" />
+		<value style="element" name="sportsName" get-method="getSportsName"
+			set-method="setSportsName" usage="optional" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetAvailLeaguesBySports"
+		name="GetAvailLeaguesBySports" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="sportID" get-method="getSportID"
+			set-method="setSportID" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.AvailLeaguesBySports"
+		name="GetAvailLeaguesBySportsResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetAvailLeaguesBySportsResult"
+			get-method="getLeagueList" set-method="setLeagueList" usage="optional"
+			create-type="java.util.ArrayList">
+			<structure map-as="ns1:League" name="League" />
+		</collection>
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetGoalsByMatch"
+		name="GetGoalsByMatch" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="MatchID" get-method="getMatchID"
+			set-method="setMatchID" />
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GoalsByMatch"
+		name="GetGoalsByMatchResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetGoalsByMatchResult" get-method="getGoalList"
+			set-method="setGoalList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:Goal" name="Goal" />
+		</collection>
+	</mapping>
+	<mapping class="de.msiggi.sportsdata.webservices.GetGoalsByLeagueSaison"
+		name="GetGoalsByLeagueSaison" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.GoalsByLeagueSaison"
+		name="GetGoalsByLeagueSaisonResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<collection name="GetGoalsByLeagueSaisonResult" get-method="getGoalList"
+			set-method="setGoalList" usage="optional" create-type="java.util.ArrayList">
+			<structure map-as="ns1:Goal" name="Goal" />
+		</collection>
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.GetGoalGettersByLeagueSaison"
+		name="GetGoalGettersByLeagueSaison" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.GoalGettersByLeagueSaison"
+		name="GetGoalGettersByLeagueSaisonResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+					<collection name="GetGoalGettersByLeagueSaisonResult"
+			get-method="getGoalGetterList" set-method="setGoalGetterList" usage="optional"
+			create-type="java.util.ArrayList">
+			<structure map-as="ns1:GoalGetter" name="GoalGetter" />
+		</collection>
+	</mapping>
+	<mapping abstract="true" type-name="ns1:GoalGetter"
+		class="de.msiggi.sportsdata.webservices.GoalGetter">
+		<value style="element" name="goalGetterID" get-method="getGoalGetterID"
+			set-method="setGoalGetterID" />
+		<value style="element" name="goalGetterName" get-method="getGoalGetterName"
+			set-method="setGoalGetterName" usage="optional" />
+		<value style="element" name="goalGetterNationality" get-method="getGoalGetterNationality"
+			set-method="setGoalGetterNationality" usage="optional" />
+		<value style="element" name="goalGetterBirthday" get-method="getGoalGetterBirthday"
+			set-method="setGoalGetterBirthday" usage="optional" />
+		<value style="element" name="goalGetterGoalCount" get-method="getGoalGetterGoalCount"
+			set-method="setGoalGetterGoalCount" usage="optional" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.GetLastChangeDateByLeagueSaison"
+		name="GetLastChangeDateByLeagueSaison" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.LastChangeDateByLeagueSaison"
+		name="GetLastChangeDateByLeagueSaisonResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="GetLastChangeDateByLeagueSaisonResult"
+			get-method="getGetLastChangeDateByLeagueSaisonResult" set-method="setGetLastChangeDateByLeagueSaisonResult" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.GetLastChangeDateByGroupLeagueSaison"
+		name="GetLastChangeDateByGroupLeagueSaison" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="groupOrderID" get-method="getGroupOrderID"
+			set-method="setGroupOrderID" />
+		<value style="element" name="leagueShortcut" get-method="getLeagueShortcut"
+			set-method="setLeagueShortcut" usage="optional" />
+		<value style="element" name="leagueSaison" get-method="getLeagueSaison"
+			set-method="setLeagueSaison" usage="optional" />
+	</mapping>
+	<mapping
+		class="de.msiggi.sportsdata.webservices.LastChangeDateByGroupLeagueSaison"
+		name="GetLastChangeDateByGroupLeagueSaisonResponse" ns="http://msiggi.de/Sportsdata/Webservices">
+		<value style="element" name="GetLastChangeDateByGroupLeagueSaisonResult"
+			get-method="getGetLastChangeDateByGroupLeagueSaisonResult"
+			set-method="setGetLastChangeDateByGroupLeagueSaisonResult" />
+	</mapping>
+</binding>
