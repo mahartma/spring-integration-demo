@@ -35,14 +35,3 @@ dependencies {
 	compile group: 'cglib', name: 'cglib-nodep', version: "2.2.2"
 	compile project(':binding')
 }
-
-// maven-like test-stats
-allprojects {
-	test {
-		afterSuite { desc, result ->
-			if (!desc.parent) {
-				println "Results: ${result.resultType} (${result.testCount} tests run, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
-			}
-		}
-	}
-}
