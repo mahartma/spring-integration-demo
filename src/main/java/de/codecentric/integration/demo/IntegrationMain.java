@@ -19,7 +19,6 @@ public class IntegrationMain {
 		AnnotationConfigApplicationContext ctx = null;
 		try {
 			ctx = new AnnotationConfigApplicationContext();
-			ctx.getEnvironment().setActiveProfiles("main");
 			ctx.register(IntegrationConfig.class);
 			ctx.refresh();
 			MessageChannel myChannel = ctx.getBean("myChannel", MessageChannel.class);
