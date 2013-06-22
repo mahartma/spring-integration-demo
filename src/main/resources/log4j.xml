@@ -7,10 +7,10 @@
 	</layout>
      </appender>
     
-    <logger name="de.codecentric">
-    	<level value="INFO" />
-    	<appender-ref ref="stdout"/>
-    </logger>
+<!--     <logger name="de.codecentric"> -->
+<!--     	<level value="INFO" /> -->
+<!--     	<appender-ref ref="stdout"/> -->
+<!--     </logger> -->
 
     <logger name="org.springframework">
     	<level value="ERROR" />
