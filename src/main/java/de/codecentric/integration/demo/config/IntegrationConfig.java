@@ -9,7 +9,9 @@ import org.springframework.integration.core.SubscribableChannel;
 import de.codecentric.integration.demo.handler.MyHandler;
 import de.codecentric.integration.demo.handler.MyPojo;
 
-
+/**
+ *  Spring-Configuration for the Integration-Demo
+ */
 @Configuration
 @ImportResource("classpath:*-context.xml")
 public class IntegrationConfig {
